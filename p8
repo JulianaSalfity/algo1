@@ -73,4 +73,4 @@ res.coordenadasDefinjdas.diccionarioVacio
 res.complemento = True
 }
 
-proc
+proc Asignar(inout M:matrizInfinita, in fila :int, int columna
