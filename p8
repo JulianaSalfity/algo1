@@ -54,3 +54,23 @@ b4 = False
 
 Elija la estructura (diccionario) y escriba los algoritmos de modo que las operaciones Crear, Ver y Complementar tomen O(1) tiempo
 en peor caso.
+
+Diccionario digital
+
+Trie
+var raiz = Nodo
+var tamaño = int
+
+Modulo Matriz infinita implementa Matriz{
+var coordenadasDefinidas: Trie <K,V>
+var complemento: Boolean
+
+proc Crear () MatrizInfinita{
+res = new MatrizInfinita
+(res.coordenadasDefinidas.raiz = null
+res.coordenadasDefiidas.tamaño = 0)
+res.coordenadasDefinjdas.diccionarioVacio
+res.complemento = True
+}
+
+proc
