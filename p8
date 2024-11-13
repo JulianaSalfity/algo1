@@ -325,7 +325,7 @@ de dıas, la cantidad total de personas que ingresaron al banco. La siguiente es
 TAD IngresosAlBanco {
 obs totales: seq⟨Z⟩
 proc nuevoIngresos () : IngresosAlBanco {
-asegura {totalDia == []}
+asegura {totales == []}
 }
 proc registrarNuevoDia (inout i: IngresosAlBanco, in cant: Z) {
 requiere {cant ≥ 0}
@@ -337,8 +337,7 @@ asegura {res == |i.totales|}
 proc cantPersonas (in i: IngresosAlBanco, in desde: Z, in hasta: Z) : Z {
 requiere {0 ≤ desde ≤ hasta ≤ |i.totales|}
 asegura {res =
-Phasta
-j=desde i.totales[j]}
+∑ (hasta, j=desde) i.totales[j]}
 }
 }
 1. Dar una estructura de representacion que permita que la funcion cantPersonas tome O(1).
@@ -347,3 +346,15 @@ j=desde i.totales[j]}
 utilizando O(n) memoria.
 4. Agregue al diseno del punto anterior una operacion mediana que devuelva el ultimo (mayor) dıa d tal que cantPersonas(i, 1, d)
 ≤ cantPersonas(i, d + 1,totDias(i)), restringiendo la operacion a los casos donde dicho dıa existe.
+
+Idea, similar a sorting, que haga una suma acumulada.Pensar mediana como pivot
+
+Modulo IngresosAlBancoImpl implementa IngresosAlBanco{
+    obs totalPorDia :vector[int]
+    obs totalAcumulado : vector[int]
+
+    proc cantPersonas (in i: IngresosAlBanco, in desde: int, in hasta: int)int{
+        res = i.totalAcumulado[desde] + i.totalAcumulado[hasta]
+    }
+    
+}
