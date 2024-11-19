@@ -1,0 +1,91 @@
+Ejercicios restantes, práctica parcial
+
+Ej p5
+Ej 12/13 p7
+Ej 10/11 p8
+Ej 17 p9
+
+2-
+a-
+Falso, ya que 2^n no es constante ya que depende de n, por lo tanto no lo puedo acotar por la constante O(1)
+b-
+Verdadero, ya que n < n! por lo tanto esta acotado superiormente por O(n!)
+c-
+Verdadero, ya que a partir de n>1 n! < n^n por lo tanto esta acotado superiormente por O(n^n)
+d-
+Falso, ya que a partir de n>4 2^n < n! por lo tanto esta acotado superiormente por O(n!)
+e-
+Verdadero ya que i,j son constante se podria reescribir como n E O(n)
+f-
+Falso, ya que crece exponencialmente
+g-
+Verdadero, ya que log n < n por lo tanto esta acotado superiormente por O(n)
+h-
+Falso, ya que con n>4 2^n < n! por lo tanto n! no está acotado superiormente por O(2^n)
+i-
+Falso, con un b < n^2 sigue valiendo
+j-
+Verdadero, ya que n^k log(n) es simpre menpr a n^k+1 y por lo tanto está acotado superiormente por O(n^k+1)
+k-
+Verdadero, por definición de O, toda función siempre está acotada por si misma
+
+3-
+Intuitivamente diría que f crece más lento que g, si se da la doble contención significa que ambas crecen a la misma "velocidad"
+
+4-
+a-
+No siempre es cierto por ejemplo si coincide el mejor con el peor caso del algoritmo esto no se cumpliría.
+b-
+Ya que hay parámetros de entrada no son fijas las cotas de G y H y varían según este parametro por lo tanto dependerá de eso que g E O(h) o no, por ejemplo si G ejecuta la mitad de operaciones que H pero su parametro de entrada era el doble que el de H entonces si valdría, pero si su parametro fuese el triple o cuadruple que H ya no.
+
+Análisis de g ∈ Θ(h):
+-----------------------------------------
+La notación g ∈ Θ(h) implica que g(n) y h(n) tienen el mismo orden de crecimiento 
+asintótico. Esto significa que existen constantes positivas c1, c2 y n0 tales que, 
+para todo n ≥ n0, se cumple:
+
+    c1 ⋅ h(n) ≤ g(n) ≤ c2 ⋅ h(n)
+
+Condición dada: g(n) = (1/2) ⋅ h(n):
+-----------------------------------------
+Si G ejecuta la mitad de las operaciones que H, entonces g(n) = (1/2) ⋅ h(n). En este caso:
+
+1. Para el límite inferior:
+    g(n) ≥ (1/2) ⋅ h(n)
+   Aquí c1 = 1/2.
+
+2. Para el límite superior:
+    g(n) ≤ (1/2) ⋅ h(n)
+   Aquí c2 = 1/2.
+
+Ambos límites están satisfechos porque g(n) es proporcional a h(n) con un factor 
+constante (1/2).
+
+Conclusión:
+-----------------------------------------
+Sí, se cumple que g ∈ Θ(h). Esto ocurre porque multiplicar una función por una constante 
+no cambia su crecimiento asintótico, y tanto g(n) como h(n) tienen el mismo orden 
+de crecimiento.
+
+c-
+El mejor caso serpia cuando el arreglo tiene 100 elems o menos ya que la complejidad es mucho menor.
+
+d-
+Si es cierto ya que habrá funciones pertenecientes a Omega(g) que no acoten inferiormente a f ya que el crecimiento de esta es siempre menor que el de g. Ademas no es posible hallar una constante tal que f(n) >= c*g(n)
+
+e-
+Es falso, por ejemplo algoritmo de busqueda pero caso Omega(n) mejor caso (es el primero) O(1)
+
+f-
+Si es cierto ya que n < n^2 por lo tanto n E O(n^2), además el mejor caso < peor caso y si algo acota al peor tambien acotara al mejor
+
+5-
+a-
+Falso sale por contraejemplo y con gráfico, f(n)= n^2 g(n)=n
+b-
+Falso, ya que si f E O(g) entonces no si o si f E Theta(g) y para pertenecer a Θ(g) ∪ Θ(h) debe pertenecer a  Θ(g) o Θ(h), esto no me lo garantiza f E O(g) ni que h sea cualquier función.
+c-
+Verdadero, f ∈ O(g) significa que |f(n)|<=c0|g(n)| para todo n >= n0 y
+h ∈ O(g) significa que |h(n)|<=c1|g(n)| para todo n >= n1
+por lo tanto |f(n)+h(n)| <= c0|g(n)| + c1|g(n)| -> |f(n)+h(n)| <= c0+c1(|g(n)|). Por lo tanto es Verdadero
+d-
