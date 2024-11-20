@@ -89,3 +89,65 @@ Verdadero, f ∈ O(g) significa que |f(n)|<=c0|g(n)| para todo n >= n0 y
 h ∈ O(g) significa que |h(n)|<=c1|g(n)| para todo n >= n1
 por lo tanto |f(n)+h(n)| <= c0|g(n)| + c1|g(n)| -> |f(n)+h(n)| <= c0+c1(|g(n)|). Por lo tanto es Verdadero
 d-
+INV REP AB
+pred InvRep (raiz: Nodo<T>) {  
+  (raiz = null) ∨ (conexo(raiz, ∅) ∧ aciclado(raiz, ∅))  
+}  
+
+pred conexo (n: Nodo<T>, visitados: Conjunto<Nodo<T>>) {  
+  n 6= null ∧  
+  n 6∈ visitados ∧  
+  ((n.izq = null ∨ conexo(n.izq, visitados ∪ {n})) ∧  
+   (n.der = null ∨ conexo(n.der, visitados ∪ {n})))  
+}  
+
+pred aciclado (n: Nodo<T>, visitados: Conjunto<Nodo<T>>) {  
+  n 6= null ∧  
+  n 6∈ visitados ∧  
+  ((n.izq = null ∨ aciclado(n.izq, visitados ∪ {n})) ∧  
+   (n.der = null ∨ aciclado(n.der, visitados ∪ {n})))  
+}  
+
+INV REP ABB
+pred InvRepABB(raiz: Nodo<T>) {  
+  (raiz = null) ∨ (conexo(raiz, ∅) ∧ aciclado(raiz, ∅) ∧ ordenadoABB(raiz, -∞, +∞))  
+}  
+
+pred ordenadoABB(n: Nodo<T>, min: T, max: T) {  
+  n = null ∨  
+  (min < n.dato < max ∧  
+   ordenadoABB(n.izq, min, n.dato) ∧  
+   ordenadoABB(n.der, n.dato, max))  
+}  
+
+pred conexo(n: Nodo<T>, visitados: Conjunto<Nodo<T>>) {  
+  n 6= null ∧  
+  n 6∈ visitados ∧  
+  ((n.izq = null ∨ conexo(n.izq, visitados ∪ {n})) ∧  
+   (n.der = null ∨ conexo(n.der, visitados ∪ {n})))  
+}  
+
+pred aciclado(n: Nodo<T>, visitados: Conjunto<Nodo<T>>) {  
+  n 6= null ∧  
+  n 6∈ visitados ∧  
+  ((n.izq = null ∨ aciclado(n.izq, visitados ∪ {n})) ∧  
+   (n.der = null ∨ aciclado(n.der, visitados ∪ {n})))  
+}  
+
+INV REP AVL
+pred InvRepAVL(raiz: Nodo<T>) {  
+  (raiz = null) ∨  
+  (conexo(raiz, ∅) ∧ aciclado(raiz, ∅) ∧ ordenadoABB(raiz, -∞, +∞) ∧ balanceado(raiz))  
+}  
+
+pred balanceado(n: Nodo<T>) {  
+  n = null ∨  
+  (|altura(n.izq) − altura(n.der)| ≤ 1 ∧  
+   balanceado(n.izq) ∧  
+   balanceado(n.der))  
+}  
+
+func altura(n: Nodo<T>): Z {  
+  n = null ? 0 : 1 + max(altura(n.izq), altura(n.der))  
+}  
+
